@@ -2,18 +2,18 @@ syntax = "proto3";
 
 package PB_Input;
 
-enum InputButton {
+enum Button {
     OK = 0;
     BACK = 1;
     START = 2;
 }
 
-enum InputAction {
+enum ButtonAction {
     PRESS = 0;
     RELEASE = 1;
 }
 
-enum InputSwitch {
+enum SwitchPosition {
     POMODORO = 0;
     BUSY = 1;
     OFF = 2;
@@ -21,16 +21,16 @@ enum InputSwitch {
     SETTINGS = 4;
 }
 
-message InputButtonEvent {
-    InputButton button = 1;
-    InputAction action = 2;
+message ButtonEvent {
+    Button button = 1;
+    ButtonAction action = 2;
 }
 
-message InputSwitchEvent {
-    InputSwitch position = 1;
+message SwitchEvent {
+    SwitchPosition position = 1;
 }
 
-message InputEncoderEvent {
+message EncoderEvent {
     int32 delta = 1;
 }
 
