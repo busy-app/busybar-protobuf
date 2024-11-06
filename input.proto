@@ -22,15 +22,15 @@ enum InputSwitch {
 }
 
 message InputButtonEvent {
-    InputButton button = 0;
-    InputAction action = 1;
+    InputButton button = 1;
+    InputAction action = 2;
 }
 
 message InputSwitchEvent {
-    InputSwitch switch = 0;
+    InputSwitch position = 1;
 }
 
 message InputEncoderEvent {
-    int16 delta = 0;
+    int32 delta = 1;
 }
 
