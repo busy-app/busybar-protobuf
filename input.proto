@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package PB_Input;
+
+enum InputButton {
+    OK = 0;
+    BACK = 1;
+    START = 2;
+}
+
+enum InputAction {
+    PRESS = 0;
+    RELEASE = 1;
+}
+
+enum InputSwitch {
+    POMODORO = 0;
+    BUSY = 1;
+    OFF = 2;
+    APPS = 3;
+    SETTINGS = 4;
+}
+
+message InputButtonEvent {
+    InputButton button = 0;
+    InputAction action = 1;
+}
+
+message InputSwitchEvent {
+    InputSwitch switch = 0;
+}
+
+message InputEncoderEvent {
+    int16 delta = 0;
+}
+

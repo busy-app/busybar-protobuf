@@ -1,0 +1,23 @@
+syntax = "proto3";
+import "input.proto";
+
+package PB;
+
+enum Status {
+    OK = 0;
+    ERROR = 1;
+}
+
+message Empty {
+}
+
+message Main {
+    uint32 id = 1;
+    Status status = 2;
+    oneof content {
+        Empty empty = 3;
+        .PB_Input.InputButtonEvent button_event = 4;
+        .PB_Input.InputSwitchEvent switch_event = 5;
+        .PB_Input.InputEncoderEvent encoder_event = 6;
+    }
+}
