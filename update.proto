@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package BSB_State;
+
+message UpdateUnavailable {
+}
+
+message UpdateAvailable {
+    string version = 1;
+}
+
+message Update {
+    oneof status {
+        UpdateUnavailable unavailable = 1;
+        UpdateAvailable available = 2;
+    }
+
+    bool allowed = 3;
+}

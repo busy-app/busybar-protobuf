@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package BSB_State;
+
+enum WifiState {
+    UNKNOWN = 0;
+    DISCONNECTED = 1;
+    CONNECTED = 2;
+    CONNECTING = 3;
+    DISCONNECTING = 4;
+    RECONNECTING = 5;
+}
+
+enum WifiSecurity {
+    OPEN = 0;
+    WPA = 1;
+    WPA2 = 2;
+    WEP = 3;
+    WPA_WPA2 = 4;
+    WPA3 = 5;
+    WPA2_WPA3 = 6;
+}
+
+enum IpConfigurationMethod {
+    DHCP = 0;
+    STATIC = 1;
+}
+
+message Ipv4 {
+    fixed32 address = 1;
+}
+
+message Ipv6 {
+    fixed64 address_lo = 1;
+    fixed64 address_hi = 2;
+}
+
+message NoAddress {
+}
+
+message Wifi {
+    WifiState state = 1;
+    optional string ssid = 2;
+    optional string bssid = 3;
+    optional uint32 channel = 4;
+    optional sint32 rssi = 5;
+    optional WifiSecurity security = 6;
+    optional IpConfigurationMethod method = 7;
+    oneof address {
+        NoAddress no_address = 8;
+        Ipv4 ipv4_address = 9;
+        Ipv6 ipv6_address = 10;
+    }
+}
