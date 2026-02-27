@@ -2,23 +2,22 @@ syntax = "proto3";
 
 package BSB_State;
 
-enum WifiState {
-    UNKNOWN = 0;
-    DISCONNECTED = 1;
-    CONNECTED = 2;
-    CONNECTING = 3;
-    DISCONNECTING = 4;
-    RECONNECTING = 5;
+enum WifiConnectionStatus {
+    CONNECTED = 0;
+    CONNECTING = 1;
+    DISCONNECTING = 2;
+    RECONNECTING = 3;
 }
 
 enum WifiSecurity {
-    OPEN = 0;
-    WPA = 1;
-    WPA2 = 2;
-    WEP = 3;
-    WPA_WPA2 = 4;
-    WPA3 = 5;
-    WPA2_WPA3 = 6;
+    UNKNOWN = 0;
+    OPEN = 1;
+    WPA = 2;
+    WPA2 = 3;
+    WEP = 4;
+    WPA_WPA2 = 5;
+    WPA3 = 6;
+    WPA2_WPA3 = 7;
 }
 
 enum IpConfigurationMethod {
@@ -26,29 +25,36 @@ enum IpConfigurationMethod {
     STATIC = 1;
 }
 
-message Ipv4 {
-    fixed32 address = 1;
+message WifiStateUnknown {
 }
 
-message Ipv6 {
-    fixed64 address_lo = 1;
-    fixed64 address_hi = 2;
+message WifiStateDisconnected {
 }
 
-message NoAddress {
+message WifiStateConnected {
+    WifiConnectionStatus status = 1;
+    string ssid = 2;
+    string bssid = 3;
+    uint32 channel = 4;
+    uint32 rssi = 5;
+    WifiSecurity security = 6;
+}
+
+message IpAddress {
+    IpConfigurationMethod method = 1;
+    string address = 2;
+    string gateway = 3;
+    string netmask = 4;
+    optional string link_local = 5;
 }
 
 message Wifi {
-    WifiState state = 1;
-    optional string ssid = 2;
-    optional string bssid = 3;
-    optional uint32 channel = 4;
-    optional sint32 rssi = 5;
-    optional WifiSecurity security = 6;
-    optional IpConfigurationMethod method = 7;
-    oneof address {
-        NoAddress no_address = 8;
-        Ipv4 ipv4_address = 9;
-        Ipv6 ipv6_address = 10;
+    oneof wifi_state {
+        WifiStateUnknown unknown = 1;
+        WifiStateDisconnected disconnected = 2;
+        WifiStateConnected connected = 3;
     }
+
+    optional IpAddress ipv4_address = 4;
+    optional IpAddress ipv6_address = 5;
 }
