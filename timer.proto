@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "util/json.proto";
+
+package BSB_Timer;
+
+message Timer {
+    BSB_Util.Json json = 1;
+}
