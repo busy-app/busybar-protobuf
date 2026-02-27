@@ -1,1 +1,1 @@
-BSB_State.State.device_name     max_size:64
+BSB_State.State.device_name     max_length:63
