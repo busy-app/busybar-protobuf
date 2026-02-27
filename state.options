@@ -1,1 +1,2 @@
-BSB_State.State.device_name     max_length:63
+BSB_State.StateUpdate.device_name     max_length:63
+BSB_State.State.updates               type:FT_POINTER

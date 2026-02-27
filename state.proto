@@ -9,18 +9,26 @@ import "frame.proto";
 
 package BSB_State;
 
+message StateUpdate {
+    oneof state {
+        string device_name = 1;
+
+        BSB_State.Power power = 2;
+
+        BSB_State.Brightness brightness = 3;
+
+        BSB_State.AudioVolume audio_volume = 4;
+
+        BSB_State.Wifi wifi = 5;
+
+        BSB_State.Update update = 6;
+
+        BSB_Frame.Frame frame = 7;
+    }
+}
+
 message State {
-    optional string device_name = 1;
+    fixed64 timestamp = 1;
 
-    optional BSB_State.Power power = 2;
-
-    optional BSB_State.Brightness brightness = 3;
-
-    optional BSB_State.AudioVolume audio_volume = 4;
-
-    optional BSB_State.Wifi wifi = 5;
-
-    optional BSB_State.Update update = 6;
-
-    optional BSB_Frame.Frame frame = 7;
+    repeated StateUpdate updates = 2;
 }
