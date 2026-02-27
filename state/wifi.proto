@@ -25,6 +25,11 @@ enum IpConfigurationMethod {
     STATIC = 1;
 }
 
+enum IpProtocol {
+    IPV4 = 0;
+    IPV6 = 1;
+}
+
 message WifiStateUnknown {
 }
 
@@ -41,10 +46,11 @@ message WifiStateConnected {
 }
 
 message IpAddress {
-    IpConfigurationMethod method = 1;
-    string address = 2;
-    string gateway = 3;
-    string netmask = 4;
+    IpProtocol protocol = 1;
+    IpConfigurationMethod method = 2;
+    string address = 3;
+    string gateway = 4;
+    string netmask = 5;
 }
 
 message Wifi {
@@ -54,6 +60,5 @@ message Wifi {
         WifiStateConnected connected = 3;
     }
 
-    optional IpAddress ipv4_address = 4;
-    optional IpAddress ipv6_address = 5;
+    repeated IpAddress ip_addresses = 4;
 }
