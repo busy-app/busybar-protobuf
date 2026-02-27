@@ -45,7 +45,6 @@ message IpAddress {
     string address = 2;
     string gateway = 3;
     string netmask = 4;
-    optional string link_local = 5;
 }
 
 message Wifi {
