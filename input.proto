@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package PB_Input;
+package BSB_Input;
 
 enum Button {
     OK = 0;
@@ -34,3 +34,10 @@ message EncoderEvent {
     int32 delta = 1;
 }
 
+message InputEvent {
+    oneof event {
+        ButtonEvent button_event = 1;
+        SwitchEvent switch_event = 2;
+        EncoderEvent encoder_event = 3;
+    }
+}

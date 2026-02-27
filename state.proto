@@ -25,6 +25,8 @@ message StateUpdate {
         BSB_State.Update update = 6;
 
         BSB_Frame.Frame frame = 7;
+
+        BSB_Input.InputEvent input = 8;
     }
 }
 
