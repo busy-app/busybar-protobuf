@@ -7,6 +7,7 @@ import "state/audio.proto";
 import "state/wifi.proto";
 import "state/update.proto";
 import "state/timezone.proto";
+import "state/matter.proto";
 import "frame.proto";
 import "timer.proto";
 import "input.proto";
@@ -31,11 +32,13 @@ message StateUpdate {
 
         BSB_State.Timezone timezone = 8;
 
-        BSB_Frame.Frame frame = 9;
+        BSB_State.Matter matter = 9;
 
-        BSB_Input.InputEvent input = 10;
+        BSB_Frame.Frame frame = 10;
 
-        BSB_Timer.Timer timer = 11;
+        BSB_Input.InputEvent input = 11;
+
+        BSB_Timer.Timer timer = 12;
     }
 }
 
