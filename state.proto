@@ -25,15 +25,17 @@ message StateUpdate {
 
         BSB_State.Wifi wifi = 5;
 
-        BSB_State.Update update = 6;
+        BSB_Update.UpdateState update_state = 6;
 
-        BSB_State.Timezone timezone = 7;
+        BSB_Update.CheckState update_check = 7;
 
-        BSB_Frame.Frame frame = 8;
+        BSB_State.Timezone timezone = 8;
 
-        BSB_Input.InputEvent input = 9;
+        BSB_Frame.Frame frame = 9;
 
-        BSB_Timer.Timer timer = 10;
+        BSB_Input.InputEvent input = 10;
+
+        BSB_Timer.Timer timer = 11;
     }
 }
 
