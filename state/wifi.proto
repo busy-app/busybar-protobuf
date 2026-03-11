@@ -41,7 +41,7 @@ message WifiStateConnected {
     string ssid = 2;
     string bssid = 3;
     uint32 channel = 4;
-    uint32 rssi = 5;
+    sint32 rssi = 5;
     WifiSecurity security = 6;
 }
 
