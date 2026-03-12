@@ -31,7 +31,7 @@ message SwitchEvent {
 }
 
 message EncoderEvent {
-    int32 delta = 1;
+    sint32 delta = 1;
 }
 
 message InputEvent {
