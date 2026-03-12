@@ -15,7 +15,7 @@ enum ButtonAction {
 
 enum SwitchPosition {
     BUSY = 0;
-    STATUS = 1;
+    CUSTOM = 1;
     OFF = 2;
     APPS = 3;
     SETTINGS = 4;
