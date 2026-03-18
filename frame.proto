@@ -5,6 +5,8 @@ package BSB_Frame;
 enum Encoding {
     PLAIN = 0;
     RUN_LENGTH = 1;
+    DEFLATE = 2;
+    DEFLATE_RUN_LENGTH = 3;
 }
 
 enum PixelFormat {
