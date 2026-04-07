@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package BSB_State;
+
+enum ErrorCause {
+    /// Streaming cannot be started due to resource limitation (e.g. no free websockets)
+    RESOURCE_LIMIT = 0;
+}
+
+message TransportError {
+    ErrorCause cause = 1;
+}
