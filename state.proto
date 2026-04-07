@@ -11,6 +11,7 @@ import "state/matter.proto";
 import "frame.proto";
 import "timer.proto";
 import "input.proto";
+import "error.proto";
 
 package BSB_State;
 
@@ -46,4 +47,6 @@ message State {
     fixed64 timestamp = 1;
 
     repeated StateUpdate updates = 2;
+
+    optional BSB_Error.Error error = 3;
 }
