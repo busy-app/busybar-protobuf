@@ -48,5 +48,5 @@ message State {
 
     repeated StateUpdate updates = 2;
 
-    optional TransportError error = 3;
+    optional Error error = 3;
 }

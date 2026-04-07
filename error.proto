@@ -7,6 +7,6 @@ enum ErrorCause {
     RESOURCE_LIMIT = 0;
 }
 
-message TransportError {
+message Error {
     ErrorCause cause = 1;
 }
