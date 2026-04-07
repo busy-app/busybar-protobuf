@@ -48,5 +48,5 @@ message State {
 
     repeated StateUpdate updates = 2;
 
-    optional Error error = 3;
+    optional BSB_Error.Error error = 3;
 }
