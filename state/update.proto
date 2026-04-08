@@ -64,3 +64,13 @@ message CheckState {
         UpdateUnavailable unavailable = 2;
     }
 }
+
+message AutoUpdateInterval {
+    uint32 start = 1; /* minutes since midnight */
+    uint32 end = 2; /* minutes since midnight */
+}
+
+message AutoUpdateState {
+    bool enabled = 1;
+    AutoUpdateInterval interval = 2;
+}
