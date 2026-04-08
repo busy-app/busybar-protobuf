@@ -8,6 +8,7 @@ import "state/wifi.proto";
 import "state/update.proto";
 import "state/timezone.proto";
 import "state/matter.proto";
+import "state/ble.proto";
 import "frame.proto";
 import "timer.proto";
 import "input.proto";
@@ -40,6 +41,8 @@ message StateUpdate {
         BSB_Input.InputEvent input = 11;
 
         BSB_Timer.Timer timer = 12;
+
+        BSB_State.Ble.Ble ble = 13;
     }
 }
 
