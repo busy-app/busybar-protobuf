@@ -43,6 +43,8 @@ message StateUpdate {
         BSB_Timer.Timer timer = 12;
 
         BSB_State.Ble.Ble ble = 13;
+
+        BSB_Update.AutoUpdateState auto_update_state = 14;
     }
 }
 
