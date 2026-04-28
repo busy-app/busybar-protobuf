@@ -9,7 +9,10 @@ message Profile {
     BSB_Util.Json json = 2;
 }
 
+message Profiles {
+    repeated Profile profiles = 1;
+}
+
 message Timer {
     BSB_Util.Json json = 1;
-    repeated Profile profiles = 2;
 }
