@@ -45,6 +45,8 @@ message StateUpdate {
         BSB_State.Ble.Ble ble = 13;
 
         BSB_Update.AutoUpdateState auto_update_state = 14;
+
+        BSB_Timer.Profiles timer_profiles = 15;
     }
 }
 
