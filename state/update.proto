@@ -44,6 +44,12 @@ enum CheckError {
     IDLE = 2; /* No check performed (initial/idle state) */
 };
 
+enum CheckEvent {
+    START = 0; /* Update check started */
+    STOP = 1; /* Update check stopped */
+    NONE = 2; /* No event (initial/idle state) */
+}
+
 message UpdateAvailable {
     string version = 1;
 }
@@ -59,6 +65,7 @@ message UpdateState {
 }
 
 message CheckState {
+    CheckEvent event = 3;
     oneof status {
         UpdateAvailable available = 1;
         UpdateUnavailable unavailable = 2;
