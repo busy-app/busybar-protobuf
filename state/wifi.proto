@@ -33,10 +33,10 @@ enum IpProtocol {
 message WifiStateUnknown {
 }
 
-message WifiStateDisconnected {
+message WifiStateInactive {
 }
 
-message WifiStateConnected {
+message WifiStateActive {
     WifiConnectionStatus status = 1;
     string ssid = 2;
     string bssid = 3;
@@ -56,8 +56,8 @@ message IpAddress {
 message Wifi {
     oneof wifi_state {
         WifiStateUnknown unknown = 1;
-        WifiStateDisconnected disconnected = 2;
-        WifiStateConnected connected = 3;
+        WifiStateInactive inactive = 2;
+        WifiStateActive active = 3;
     }
 
     repeated IpAddress ip_addresses = 4;
