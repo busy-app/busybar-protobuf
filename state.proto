@@ -1,5 +1,6 @@
 syntax = "proto3";
 
+import "state/app_queue.proto";
 import "state/device_name.proto";
 import "state/brightness.proto";
 import "state/power.proto";
@@ -47,6 +48,8 @@ message StateUpdate {
         BSB_Update.AutoUpdateState auto_update_state = 14;
 
         BSB_Timer.Profiles timer_profiles = 15;
+
+        BSB_State.AppQueue app_queue = 16;
     }
 }
 

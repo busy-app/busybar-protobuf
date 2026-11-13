@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package BSB_State;
+
+enum AppQueueError {
+    OK = 0; /* Operation finished successfully */
+    DOWNLOAD = 1; /* Failed to download remote file */
+    UNPACK = 2; /* Failed to unpack archive file  */
+    MANIFEST = 3; /* Invalid or missing manifest file */
+    API_VERSION = 4; /* API version incompatible */
+    STORAGE = 5; /* Storage error (Generic) */
+    TIMEOUT = 6; /* Operation timed out */
+    NOT_FOUND = 7; /* Item not found (Generic) */
+    QUEUE_FULL = 8; /* Operation queue is full */
+    CANCELLED = 9; /* Operation was cancelled by user */
+    APP_RUNNING = 10; /* Application is running, failed to perform operation on it */
+    PARAMETER = 11; /* Invalid parameter value (Generic)*/
+    INTERNAL = 12; /* Unknown internal error (Generic)*/
+}
+
+message AppQueueOperationDetail {
+    string step = 1;
+    optional uint32 progress = 2;
+}
+
+message AppQueueOperationResult {
+    AppQueueError error = 1;
+}
+
+message AppQueueOperationEvent {
+    uint32 item_id = 1;
+    oneof event {
+        AppQueueOperationDetail detail = 2;
+        AppQueueOperationResult result = 3;
+    };
+}
+
+message AppQueue {
+    oneof event {
+        AppQueueOperationEvent operation = 1;
+    }
+}
