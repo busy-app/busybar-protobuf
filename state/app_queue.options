@@ -1,2 +1,2 @@
-BSB_State.AppQueue.AppQueueOperationDetail.step max_length:32
-BSB_State.AppQueue.AppQueueOperationDetail.progress int_size:IS_8
+BSB_State.AppQueueOperationDetail.step max_length:32
+BSB_State.AppQueueOperationDetail.progress int_size:IS_8
