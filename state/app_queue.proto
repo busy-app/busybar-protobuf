@@ -18,7 +18,13 @@ enum AppQueueError {
     INTERNAL = 12; /* Unknown internal error (Generic)*/
 }
 
-/* Current operation detail */
+/*
+ * NOTE: It is possible for a client to receive an AppQueueOperationDetail
+ * message for an item_id that has already been reported as completed
+ * via the AppQueueOperationResult message.
+ */
+
+/* Current operation detail. */
 message AppQueueOperationDetail {
     uint32 item_id = 1; /* Numeric operation ID in the queue */
     string step = 2; /* String name of the current step */
