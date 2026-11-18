@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package BSB_State;
+
+enum AppQueueError {
+    OK = 0; /* Operation finished successfully */
+    DOWNLOAD = 1; /* Failed to download remote file */
+    UNPACK = 2; /* Failed to unpack archive file  */
+    MANIFEST = 3; /* Invalid or missing manifest file */
+    API_VERSION = 4; /* API version incompatible */
+    STORAGE = 5; /* Storage error (Generic) */
+    TIMEOUT = 6; /* Operation timed out */
+    NOT_FOUND = 7; /* Item not found (Generic) */
+    QUEUE_FULL = 8; /* Operation queue is full */
+    CANCELLED = 9; /* Operation was cancelled by user */
+    APP_RUNNING = 10; /* Application is running, failed to perform operation on it */
+    PARAMETER = 11; /* Invalid parameter value (Generic)*/
+    INTERNAL = 12; /* Unknown internal error (Generic)*/
+}
+
+/*
+ * NOTE: It is possible for a client to receive an AppQueueOperationDetail
+ * message for an item_id that has already been reported as completed
+ * via the AppQueueOperationResult message.
+ */
+
+/* Current operation detail. */
+message AppQueueOperationDetail {
+    uint32 item_id = 1; /* Numeric operation ID in the queue */
+    string step = 2; /* String name of the current step */
+    optional uint32 progress = 3; /* Total progress of the operation (0-100) */
+}
+
+/* Operation completion result */
+message AppQueueOperationResult {
+    uint32 item_id = 1; /* Numeric operation ID in the queue */
+    AppQueueError error = 2; /* Error reported by the operation (OK if none) */
+}
+
+/* State-like messages: can be coalesced/dropped */
+message AppQueueState {
+    oneof value {
+        AppQueueOperationDetail detail = 1;
+    }
+}
+
+/* Event-like messages: sequential, cannot be dropped */
+message AppQueueEvent {
+    oneof value {
+        AppQueueOperationResult result = 1;
+    }
+}
