@@ -49,7 +49,9 @@ message StateUpdate {
 
         BSB_Timer.Profiles timer_profiles = 15;
 
-        BSB_State.AppQueue app_queue = 16;
+        BSB_State.AppQueueState app_queue_state = 16;
+
+        BSB_State.AppQueueEvent app_queue_event = 17;
     }
 }
 

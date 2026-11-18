@@ -18,25 +18,29 @@ enum AppQueueError {
     INTERNAL = 12; /* Unknown internal error (Generic)*/
 }
 
+/* Current operation detail */
 message AppQueueOperationDetail {
-    string step = 1;
-    optional uint32 progress = 2;
+    uint32 item_id = 1; /* Numeric operation ID in the queue */
+    string step = 2; /* String name of the current step */
+    optional uint32 progress = 3; /* Total progress of the operation (0-100) */
 }
 
+/* Operation completion result */
 message AppQueueOperationResult {
-    AppQueueError error = 1;
+    uint32 item_id = 1; /* Numeric operation ID in the queue */
+    AppQueueError error = 2; /* Error reported by the operation (OK if none) */
 }
 
-message AppQueueOperationEvent {
-    uint32 item_id = 1;
-    oneof event {
-        AppQueueOperationDetail detail = 2;
-        AppQueueOperationResult result = 3;
-    };
+/* State-like messages: can be coalesced/dropped */
+message AppQueueState {
+    oneof value {
+        AppQueueOperationDetail detail = 1;
+    }
 }
 
-message AppQueue {
-    oneof event {
-        AppQueueOperationEvent operation = 1;
+/* Event-like messages: sequential, cannot be dropped */
+message AppQueueEvent {
+    oneof value {
+        AppQueueOperationResult result = 1;
     }
 }
