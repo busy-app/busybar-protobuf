@@ -40,13 +40,13 @@ message QueueOperationResult {
 /* State-like messages: can be coalesced/dropped */
 message State {
     oneof value {
-        QueueOperationDetail detail = 1;
+        QueueOperationDetail queue_operation_detail = 1;
     }
 }
 
 /* Event-like messages: sequential, cannot be dropped */
 message Event {
     oneof value {
-        QueueOperationResult result = 1;
+        QueueOperationResult queue_operation_result = 1;
     }
 }
