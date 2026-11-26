@@ -3,7 +3,7 @@ syntax = "proto3";
 package BSB_State.Apps;
 
 enum QueueError {
-    QUEUE_ERROR_OK = 0; /* Operation finished successfully */
+    QUEUE_ERROR_NONE = 0; /* Operation finished successfully */
     QUEUE_ERROR_DOWNLOAD = 1; /* Failed to download remote file */
     QUEUE_ERROR_UNPACK = 2; /* Failed to unpack archive file  */
     QUEUE_ERROR_MANIFEST = 3; /* Invalid or missing manifest file */
